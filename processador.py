@@ -33,7 +33,7 @@ def process_image_callback(ch, method, properties, body):
     ch.basic_ack(delivery_tag=method.delivery_tag)
 
 credentials = pika.PlainCredentials('processador', 'processador')
-connection = pika.BlockingConnection(pika.ConnectionParameter(host='172.20.0.1', credentials=credentials))
+connection = pika.BlockingConnection(pika.ConnectionParameters(host='172.20.0.1', credentials=credentials))
 channel = connection.channel()
 channel.queue_declare(queue='image_queue')
 
